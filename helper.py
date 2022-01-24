@@ -23,7 +23,7 @@ class Sheets:
 
     def __init__(self, sheet_name):
         self.sheet_name = sheet_name
-        gc = gspread.service_account()
+        gc = gspread.service_account_from_dict(GS_SERVICE)
         self.sheet = gc.open(self.sheet_name).sheet1
         self.df = pd.DataFrame(self.sheet.get_all_records())
 
