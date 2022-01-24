@@ -1,4 +1,6 @@
 import gspread
+import os
+import json
 import pandas as pd
 
 ON_HEROKU = os.environ.get("ON_HEROKU")
