@@ -1,6 +1,21 @@
 import gspread
 import pandas as pd
 
+ON_HEROKU = os.environ.get("ON_HEROKU")
+if ON_HEROKU:
+    print("log: system is aware its on heroku")
+    string_gs_service = os.environ.get('GS_SERVICE')
+    GS_SERVICE = json.loads(string_gs_service)gs-token.json
+else:
+    print("log: system is aware it is not on heroku")
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    GS_TOKEN_PATH = os.path.join(ROOT_DIR, 'gs-token.json')
+    try:
+        with open(GS_TOKEN_PATH, 'r') as f:
+            GS_SERVICE = json.load(f)
+    except FileNotFoundError:
+        print("log: google sheets token file not found")
+
 
 class Sheets:
     """This class will enable saving and retrieving of data from google spreadsheets
