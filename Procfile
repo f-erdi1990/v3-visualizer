@@ -1,1 +1,1 @@
-web: gunicorn visualize:server -b :8000
+web: gunicorn visualize:server --preload -b 0.0.0.0:5000 
