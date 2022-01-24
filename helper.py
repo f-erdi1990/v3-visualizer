@@ -7,6 +7,7 @@ ON_HEROKU = os.environ.get("ON_HEROKU")
 if ON_HEROKU:
     print("log: system is aware its on heroku")
     string_gs_service = os.environ.get('GS_SERVICE')
+    print("log: {}").format(string_gs_service)
     GS_SERVICE = json.loads(string_gs_service)
 else:
     print("log: system is aware it is not on heroku")
